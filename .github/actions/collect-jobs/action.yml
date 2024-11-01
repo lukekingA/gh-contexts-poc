@@ -1,0 +1,11 @@
+name: collect-jobs
+description: Collects all jobs in a workflow
+
+runs:
+  using: composite
+  steps:
+    - name: Collect jobs
+      run: |
+        if [ -z "${{ env.JOBS }}" ]; then
+          echo JOBS >> $GITHUB_ENV
+        
