@@ -4,6 +4,7 @@ description: Collects all jobs in a workflow
 runs:
   using: composite
   steps:
+  shell: bash
     - name: Collect jobs
       run: |
         if [ -z "${{ env.JOBS }}" ]; then
