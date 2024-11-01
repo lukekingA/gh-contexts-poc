@@ -30,14 +30,14 @@ jobs:
       - name: py hello
         run: python ./hello.py
 
-  jobs-context:
-    runs-on: ubuntu-latest
-    env:
-      JOBS: 
-    steps:
-      - name: print jobs context
-        run: |
-          echo "jobs-context: ${{ toJson(jobs) }}"
-          echo "job-1: ${{ toJson(jobs.job-1) }}"
-          echo "job-2: ${{ toJson(jobs.job-2) }}"
-          echo "job-3: ${{ toJson(jobs.job-3) }}"
+  # jobs-context:
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     JOBS: 
+  #   steps:
+  #     - name: print jobs context
+  #       run: |
+  #         echo "jobs-context: ${{ toJson(jobs) }}"
+  #         echo "job-1: ${{ toJson(jobs.job-1) }}"
+  #         echo "job-2: ${{ toJson(jobs.job-2) }}"
+  #         echo "job-3: ${{ toJson(jobs.job-3) }}"
