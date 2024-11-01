@@ -9,7 +9,7 @@ runs:
   using: composite
   steps:
     - name: check jobs env
-      if: ${{ !env.JOBS }}
+      if: ${{ env.JOBS != '' && env.JOBS != null }}
       shell: bash
       run: echo "JOBS=" >> $GITHUB_ENV
     - name: add jobs
