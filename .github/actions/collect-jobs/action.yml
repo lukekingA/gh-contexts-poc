@@ -15,7 +15,7 @@ runs:
     - name: add jobs
       shell: bash
       env:
-        CONCAT_JOBS: $"{{ env.JOBS}}, ${{ inputs.JOB }}"
+        CONCAT_JOBS: "${{ env.JOBS}}, ${{ inputs.JOB }}"
       run: echo "JOBS=$CONCAT_JOBS"  >> $GITHUB_ENV
     - name: echo jobs
       shell: bash
