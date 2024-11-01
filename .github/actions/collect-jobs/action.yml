@@ -11,7 +11,7 @@ runs:
     - name: check jobs env
       if: ${{ !env.JOBS }}
       shell: bash
-      run: echo "JOBS=default" >> $GITHUB_ENV
+      run: echo "JOBS=" >> $GITHUB_ENV
     - name: add jobs
       shell: bash
       env:
