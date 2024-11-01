@@ -9,12 +9,12 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     steps:
+      - name: check out code
+        uses: actions/checkout@v4
       - name: sanity check
         run: |
           pwd
           ls -la
-      - name: check out code
-        uses: actions/checkout@v4
       - name: echo job-1
         run: echo "job-1"
       - name: echo env
