@@ -9,6 +9,7 @@ runs:
       env:
         JOBS: ${{ env.JOBS }}
       run: |
-        if [ -z "$JOBS" ]; then
-          echo JOBS >> $GITHUB_ENV
+        if [ -z "$JOBS" ]; then \
+          echo JOBS >> $GITHUB_ENV; \
+        fi
         
