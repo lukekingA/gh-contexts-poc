@@ -13,13 +13,17 @@ jobs:
         run: echo "job-1"
       - name: echo env
         run: echo "github env vars ${{ toJson(env) }}"
-      # - name: persist jobname
-      #   run: if [ -z "${{ env.JOBS }}" ]; then 
+      - name: set jobs env
+        uses: ./.github/actions/collect-jobs
+      - name: persist jobname
+        run: echo "github env vars ${{ toJson(env) }}"
 
   job-2:
     runs-on: ubuntu-latest
     container: node:14
     steps:
+      - name: check out code
+        uses: actions/checkout@v4
       - name: js hello
         run: node ./hello.js
 
@@ -27,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     container: python:3.8
     steps:
+      - name: check out code
+        uses: actions/checkout@v4
       - name: py hello
         run: python ./hello.py
 
