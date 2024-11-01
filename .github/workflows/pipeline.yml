@@ -33,7 +33,7 @@ jobs:
           ls -la
           ls -la ./.github
           ls -la ./.github/workflows
-          node ./.github/workfows/hello.js
+          node ./.github/workflows/hello.js
       - name: set job name
         uses: ./.github/actions/collect-jobs
         with:
@@ -47,7 +47,7 @@ jobs:
       - name: check out code
         uses: actions/checkout@v4
       - name: py hello
-        run: python ./.github/workfows/hello.py
+        run: python ./.github/workflows/hello.py
       - name: set job name
         uses: ./.github/actions/collect-jobs
         with:
