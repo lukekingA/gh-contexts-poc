@@ -9,6 +9,8 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     steps:
+      - name: check out code
+        uses: actions/checkout@v4
       - name: echo job-1
         run: echo "job-1"
       - name: echo env
@@ -25,7 +27,7 @@ jobs:
       - name: check out code
         uses: actions/checkout@v4
       - name: js hello
-        run: node ./github/workfows/hello.js
+        run: node ./.github/workfows/hello.js
 
   job-3:
     runs-on: ubuntu-latest
@@ -34,7 +36,7 @@ jobs:
       - name: check out code
         uses: actions/checkout@v4
       - name: py hello
-        run: python ./github/workfows/hello.py
+        run: python ./.github/workfows/hello.py
 
   # jobs-context:
   #   runs-on: ubuntu-latest
