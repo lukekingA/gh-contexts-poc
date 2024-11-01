@@ -17,7 +17,7 @@ runs:
       env:
         JOBS: ${{ env.JOBS }}
         JOB: ${{ inputs.JOB }}
-      run: echo "JOBS=\"${JOBS}, ${JOB}\"  >> $GITHUB_ENV
+      run: echo "JOBS=\"${JOBS}, ${JOB}\""  >> $GITHUB_ENV
     - name: echo jobs
       shell: bash
       run: echo "jobs - $JOBS"
