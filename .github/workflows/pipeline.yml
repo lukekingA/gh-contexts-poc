@@ -35,7 +35,7 @@ jobs:
     steps:
       - name: find failed job
         env:
-          JOBS: ${{ needs }}
+          JOBS: ${{ toJson(needs) }}
         run: |
           echo $JOBS
       # - name: report failure
