@@ -6,7 +6,9 @@ runs:
   steps:
     - name: Collect jobs
       shell: bash
+      env:
+        JOBS: ${{ env.JOBS }}
       run: |
-        if [ -z "${{ env.JOBS }}" ]; then
+        if [ -z "$JOBS" ]; then
           echo JOBS >> $GITHUB_ENV
         
