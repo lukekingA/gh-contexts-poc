@@ -4,8 +4,8 @@ description: Collects all jobs in a workflow
 runs:
   using: composite
   steps:
-  shell: bash
     - name: Collect jobs
+      shell: bash
       run: |
         if [ -z "${{ env.JOBS }}" ]; then
           echo JOBS >> $GITHUB_ENV
