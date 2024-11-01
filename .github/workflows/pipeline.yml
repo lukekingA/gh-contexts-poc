@@ -37,7 +37,7 @@ jobs:
         env:
           JOBS: ${{ toJson(needs) }}
         run: |
-          echo $JOBS | jq '.[] | select(.result == "failure") '
+          echo $JOBS | jq 'to_entries[] | select(.result == "failure" | .key)'
       # - name: report failure
       #   uses: ./.github/actions/reporter
       #   with:
