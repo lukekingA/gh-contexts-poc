@@ -14,7 +14,6 @@ jobs:
 
   job-2:
     runs-on: ubuntu-latest
-    container: node:14
     needs: job-1
     steps:
       - name: echo job-2
@@ -22,7 +21,6 @@ jobs:
 
   job-3:
     runs-on: ubuntu-latest
-    container: python:3.8
     needs: job-2
     steps:
       - name: echo job-3
