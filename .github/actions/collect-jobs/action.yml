@@ -1,5 +1,9 @@
 name: collect-jobs
 description: Collects all jobs in a workflow
+inputs:
+  JOB:
+    description: 'Job name'
+    required: true
 
 runs:
   using: composite
@@ -8,12 +12,13 @@ runs:
       if: ${{ !env.JOBS }}
       shell: bash
       run: echo "JOBS=default" >> $GITHUB_ENV
-    - name: Collect jobs
+    - name: add jobs
       shell: bash
       env:
         JOBS: ${{ env.JOBS }}
-      run: |
-        if [ -z "$JOBS" ]; then \
-          echo JOBS >> $GITHUB_ENV; \
-        fi
+        JOB: ${{ inputs.JOB }}
+      run: echo "JOBS=\"${JOBS}, ${JOB}\"  >> $GITHUB_ENV
+    - name: echo jobs
+      run: echo "JOBS: $JOBS"
+       
         

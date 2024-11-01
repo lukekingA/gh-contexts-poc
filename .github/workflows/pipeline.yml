@@ -19,9 +19,11 @@ jobs:
         run: echo "job-1"
       - name: echo env
         run: echo "github env vars ${{ toJson(env) }}"
-      - name: set jobs env
+      - name: set job name
         uses: ./.github/actions/collect-jobs
-      - name: persist jobname
+        with:
+          JOB: job-1
+      - name: echo jobs
         run: echo "github env vars ${{ toJson(env) }}"
 
   job-2:
