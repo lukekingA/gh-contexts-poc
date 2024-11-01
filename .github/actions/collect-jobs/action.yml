@@ -19,6 +19,7 @@ runs:
         JOB: ${{ inputs.JOB }}
       run: echo "JOBS=\"${JOBS}, ${JOB}\"  >> $GITHUB_ENV
     - name: echo jobs
-      run: echo "JOBS: $JOBS"
+      shell: bash
+      run: echo "jobs - $JOBS"
        
         
