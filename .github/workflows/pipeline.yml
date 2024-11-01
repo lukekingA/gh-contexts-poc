@@ -14,7 +14,7 @@ jobs:
       - name: echo env
         run: echo "github env vars ${{ toJson(env) }}"
       - name: set jobs env
-        uses: ./.github/actions/collect-jobs
+        uses: ../.github/actions/collect-jobs
       - name: persist jobname
         run: echo "github env vars ${{ toJson(env) }}"
 
@@ -25,7 +25,7 @@ jobs:
       - name: check out code
         uses: actions/checkout@v4
       - name: js hello
-        run: node ./hello.js
+        run: node ./github/workfows/hello.js
 
   job-3:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
       - name: check out code
         uses: actions/checkout@v4
       - name: py hello
-        run: python ./hello.py
+        run: python ./github/workfows/hello.py
 
   # jobs-context:
   #   runs-on: ubuntu-latest
