@@ -3,7 +3,7 @@ name: jobs context poc
 on: [push]
 
 env:
-  SLOBS:
+  SLOBS: 
 
 jobs:
   job-1:
@@ -12,7 +12,7 @@ jobs:
       - name: echo job-1
         run: echo "job-1"
       - name: echo env
-        run: echo "env: ${{ toJson(env) }}"
+        run: echo "github env vars ${{ toJson(env) }}"
       # - name: persist jobname
       #   run: if [ -z "${{ env.JOBS }}" ]; then 
 
