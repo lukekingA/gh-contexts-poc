@@ -2,12 +2,19 @@ name: jobs context poc
 
 on: [push]
 
+env:
+  SLOBS:
+
 jobs:
   job-1:
     runs-on: ubuntu-latest
     steps:
       - name: echo job-1
         run: echo "job-1"
+      - name: echo env
+        run: echo "env: ${{ toJson(env) }}"
+      # - name: persist jobname
+      #   run: if [ -z "${{ env.JOBS }}" ]; then 
 
   job-2:
     runs-on: ubuntu-latest
@@ -25,6 +32,8 @@ jobs:
 
   jobs-context:
     runs-on: ubuntu-latest
+    env:
+      JOBS: 
     steps:
       - name: print jobs context
         run: |
