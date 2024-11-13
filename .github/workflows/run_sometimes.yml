@@ -1,0 +1,13 @@
+name: i run sometimes
+
+on:
+  workflow_call:
+    paths:
+      - '.github/workflows/scripts/**'
+
+jobs:
+  optional-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo optional-job
+        run: echo "optional-job"

@@ -13,11 +13,10 @@ jobs:
         run: echo "job-1"
 
   job-2:
+    if: 
     runs-on: ubuntu-latest
     needs: job-1
-    steps:
-      - name: echo job-2
-        run: echo "job-2"
+    uses: ./.github/workflows/run_somtimes.yml
 
   job-3:
     runs-on: ubuntu-latest
@@ -37,8 +36,16 @@ jobs:
         env:
           JOBS: ${{ toJson(needs) }}
         run: |
-          echo $JOBS | jq 'to_entries[] | select(.value.result == "failure") | .key'
-      # - name: report failure
-      #   uses: ./.github/actions/reporter
-      #   with:
-      #     message: "job-4 failed"
+          FAILED_JOB=$(echo $JOBS | jq 'to_entries[] | select(.value.result == "failure") | .key')
+          echo "FAILED_JOB=$FAILED_JOB" >> $GITHUB_ENV
+      - name: report failed job
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.sendgrid.net
+          server_port: 587
+          username: ${{ secrets.SENDGRID_USER }}
+          password: ${{ secrets.SENDGRID_PASSWORD }}
+          subject: 'Test Email'
+          body: "Job ${{ env.FAILED_JOB }} failed"
+          to: '
+      
