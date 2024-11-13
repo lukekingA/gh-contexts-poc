@@ -8,6 +8,9 @@ on:
     types:
       - closed
 
+permissions:
+  contents: read
+
 env:
   SLOBS: 
 
