@@ -12,6 +12,18 @@ jobs:
       - name: echo job-1
         run: echo "job-1"
 
+  check-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: find changes
+        id: find_changes
+        run: |
+          git diff 
+          echo "::set-output name=changes::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
+
+
   job-2:
     needs: job-1
     uses: ./.github/workflows/run_sometimes.yml
