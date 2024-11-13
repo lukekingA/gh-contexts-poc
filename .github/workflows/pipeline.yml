@@ -47,5 +47,5 @@ jobs:
           password: ${{ secrets.SENDGRID_PASSWORD }}
           subject: 'Test Email'
           body: "Job ${{ env.FAILED_JOB }} failed"
-          to: '
+          to: 'lxkdevtesting@gmail.com'
       
