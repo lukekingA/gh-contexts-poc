@@ -1,6 +1,12 @@
 name: jobs context poc
 
-on: [push]
+# on: [push]
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
 
 env:
   SLOBS: 
@@ -12,21 +18,28 @@ jobs:
       - name: echo job-1
         run: echo "job-1"
 
-  check-changes:
+  check-change:
     runs-on: ubuntu-latest
+    needs: job-1
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: find changes
-        id: find_changes
+      - name: check change
+        id: check_change
         run: |
-          git diff 
-          echo "::set-output name=changes::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
-
+          flag=$(git diff --name-only ${{ github.head_ref}}..${{github.base_ref}} -- ./.github/workflows/scripts/**)
+          if [ -z "$flag" ]; then
+            echo "change=false" >> $GITHUB_ENV
+          else
+            echo "change=true" >> $GITHUB_ENV
+          fi
 
   job-2:
-    needs: job-1
-    uses: ./.github/workflows/run_sometimes.yml
+    runs-on: ubuntu-latest
+    needs: check-change
+    if: ${{ env.change == 'true' }}
+    steps:
+      - name: echo job-2
+        run: echo "job-2"
+
 
   job-3:
     runs-on: ubuntu-latest
