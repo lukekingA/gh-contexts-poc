@@ -32,7 +32,9 @@ jobs:
       - name: check change
         id: check_change
         run: |
-          flag=$(git diff --name-only ${{ github.head_ref}}..${{github.base_ref}} -- ./.github/workflows/scripts/**)
+          git branch
+          git fetch origin
+          flag=$(git diff --name-only origin/${{ github.head_ref}}..origin/${{github.base_ref}} -- ./.github/workflows/scripts/**)
           if [ -z "$flag" ]; then
             echo "::set-output name=change::false"
           else
