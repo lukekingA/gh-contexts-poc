@@ -9,7 +9,7 @@ jobs:
     
     steps:
       - name: set env var
-        working-directory: ./github/workflows/scripts
+        working-directory: ./.github/workflows/scripts
         run: |
           pwd
           echo "FOO=bar" >> $GITHUB_ENV
