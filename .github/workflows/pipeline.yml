@@ -24,6 +24,8 @@ jobs:
   check-change:
     runs-on: ubuntu-latest
     needs: job-1
+    outputs:
+      change: ${{ steps.check-change.outputs.change }}
     steps:
       - name: check out code
         uses: actions/checkout@v4
@@ -49,7 +51,7 @@ jobs:
     steps:
       - name: echo job-2
         run: |
-          if [ ${CHANGE} == 'false' ]; then
+          if [ ${CHANGE} eq 'false' ]; then
             echo "change not found"
             exit 0
           fi
