@@ -12,10 +12,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: set env var
-        working-directory: ./.github/workflows/scripts
+        # working-directory: ./.github/workflows/scripts
         run: |
           pwd
           ls -la
+          cd ./.github/workflows/scripts
           echo "FOO=bar" >> $GITHUB_ENV
       - name: echo env var
         run: |
