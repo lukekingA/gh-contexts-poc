@@ -6,12 +6,16 @@ on: [push]
 jobs:
   test-steps-context:
     runs-on: ubuntu-latest
+    
     steps:
       - name: set env var
+        working-directory: ./github/workflows/scripts
         run: |
+          pwd
           echo "FOO=bar" >> $GITHUB_ENV
       - name: echo env var
         run: |
+          pwd
           echo $FOO
       - name: use foo for if false
         if: ${{ env.FOO != 'bar' }}
@@ -20,6 +24,7 @@ jobs:
       - name: use foo for if true
         if: ${{ env.FOO == 'bar' }}
         run: |
+          pwd
           echo "FOO is bar. I should run"
 
 
