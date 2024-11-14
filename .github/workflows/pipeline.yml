@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: echo job-2
         run: |
-          if [ ${CHANGE} eq 'false' ]; then
+          if [ "${CHANGE}" == 'false' ]; then
             echo "change not found"
             exit 0
           fi
