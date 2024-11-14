@@ -12,6 +12,7 @@ jobs:
         # working-directory: .github/workflows/scripts
         run: |
           pwd
+          ls -la
           echo "FOO=bar" >> $GITHUB_ENV
       - name: echo env var
         run: |
