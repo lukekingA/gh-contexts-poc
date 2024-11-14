@@ -30,7 +30,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: check change
-        id: check_change
+        id: check-change
         run: |
           git branch
           git fetch origin
