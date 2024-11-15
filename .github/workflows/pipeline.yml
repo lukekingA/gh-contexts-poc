@@ -45,6 +45,9 @@ jobs:
           echo ${{ fromJson(env.MATRIX_MAP).x86_64-linux.os }}
           echo ${{ fromJson(env.MATRIX_MAP).aarch64-darwin.os }}
 
+  test-general-workflow:
+    uses: ./.github/workflows/general/run_sometimes.yml
+
 
 
 # on:
