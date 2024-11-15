@@ -30,7 +30,7 @@ jobs:
         if: ${{ env.FOO == 'bar' }}
         run: |
           pwd
-          echo "FOO is bar. I should run"
+          echo "${FOO} is bar. I should run"
 
 
 
