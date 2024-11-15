@@ -4,8 +4,7 @@ name: jobs context poc
 on: [push]
 
 env:
-  MATRIX_MAP: |
-    '{
+  MATRIX_MAP: '{
       "x86_64-linux": { "os": "ubuntu-24.04" },
       "aarch64-darwin": { "os": "macos-14" }
     }'
