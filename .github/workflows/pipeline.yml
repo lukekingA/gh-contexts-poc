@@ -3,6 +3,13 @@ name: jobs context poc
 
 on: [push]
 
+env:
+  MATRIX_MAP: |
+    '{
+      "x86_64-linux": { "os": "ubuntu-24.04" },
+      "aarch64-darwin": { "os": "macos-14" }
+    }'
+
 jobs:
   test-steps-context:
     runs-on: ubuntu-latest
@@ -31,6 +38,13 @@ jobs:
         run: |
           pwd
           echo "${FOO} is bar. I should run"
+      - name: chech multi line env var
+        run: |
+          echo ${MATRIX_MAP}
+          echo ${{ env.MATRIX_MAP }}
+          echo ${{ fromJson(env.MATRIX_MAP) }}
+          echo ${{ fromJson(env.MATRIX_MAP).x86_64-linux.os }}
+          echo ${{ fromJson(env.MATRIX_MAP).aarch64-darwin.os }}
 
 
 
