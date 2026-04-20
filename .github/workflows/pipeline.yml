@@ -1,7 +1,10 @@
 name: jobs context poc
 
 
-on: [push]
+on: 
+  push:
+    branches-ignore:
+      - main
 
 env:
   MATRIX_MAP: '{
