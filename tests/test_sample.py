@@ -6,4 +6,4 @@ def test_string_upper():
     assert "hello".upper() == "HELLO"
 
 def test_fails():
-    assert 1 + 2 == 3
+    assert 1 + 1 == 3
